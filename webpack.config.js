@@ -7,14 +7,14 @@ const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 
 module.exports = {
   entry: {
-    'app': './src/js/app.js'
+    'app': './src/app.js'
   },
   output: {
       path: path.resolve(__dirname, './dist/'),
       filename: './js/[name].js',
   },
   mode: 'development',
-  watch: true,
+  //watch: true,
   watchOptions: {
     ignored: /node_modules/
   },
@@ -64,11 +64,7 @@ module.exports = {
         use: [ 'style-loader', 'css-loader', 'sass-loader' ]
       },
       {
-        test: /\.png$/,
-        use: [ 'file-loader?name=./images/[name].[ext]' ]
-      },
-      {
-        test: /\.jpg$/,
+        test: /\.(jpg|png|svg)$/,
         use: [ 'file-loader?name=./images/[name].[ext]' ]
       },
       {
@@ -76,7 +72,7 @@ module.exports = {
         use: [ 'file-loader?name=./php/[name].[ext]' ]
       },
       {
-        test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+        test: /\.(woff(2)?|ttf|eot)(\?v=\d+\.\d+\.\d+)?$/,
         use: [ 'file-loader?name=./fonts/[name].[ext]' ]
       }
     ]
