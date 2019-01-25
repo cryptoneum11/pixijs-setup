@@ -4,7 +4,7 @@ import $ from 'jquery';
 import PixiFps from 'pixi-fps';
 const fpsCounter = new PixiFps();
 // modules
-import './modules/myutils.js';
+import {getRandomInt} from './modules/myutils.js';
 // images
 import '../images/circle.png';
 
@@ -34,10 +34,12 @@ PIXI.loader
   .load( setup );
 
 function setup(){
-  let sprite = new PIXI.Sprite( PIXI.loader.resources[ '../images/circle.png' ].texture );
-  sprite.position.x = 200;
-  sprite.position.y = 200;
-  app.stage.addChild( sprite );
+  for(let i = 0; i < 1000; i++){
+    let sprite = new PIXI.Sprite( PIXI.loader.resources[ '../images/circle.png' ].texture );
+    sprite.position.x = getRandomInt( 0, innerWidth );
+    sprite.position.y = getRandomInt( 0, innerHeight );
+    app.stage.addChild( sprite );
+  }
 
 }
 
